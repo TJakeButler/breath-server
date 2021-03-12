@@ -11,6 +11,25 @@ from rest_framework import status
 
 class Journals(ViewSet):
     """Journals"""
+
+    def destroy(self, request, pk=None):
+        """Handle DELETE requests for a single game
+
+        Returns:
+            Response -- 200, 404, or 500 status code
+        """
+        try:
+            journal = Journal.objects.get(pk=pk)
+            journal.delete()
+
+            return Response({}, status=status.HTTP_204_NO_CONTENT)
+
+        except Journal.DoesNotExist as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
+
+        except Exception as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
     def create(self, request):
         """Handle POST operations for events
 
