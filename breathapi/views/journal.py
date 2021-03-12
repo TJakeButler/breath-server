@@ -1,13 +1,36 @@
-"""View module for handling requests about game types"""
+"""View module for handling requests about journals"""
 from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
 from breathapi.models import Journal
+from breathapi.models import Log
+from django.core.exceptions import ValidationError
+from rest_framework import status
 
 
 class Journals(ViewSet):
-    """Types"""
+    """Journals"""
+    def create(self, request):
+        """Handle POST operations for events
+
+        Returns:
+            Response -- JSON serialized event instance
+        """
+        
+
+        journal = Journal()
+        journal.entry = request.data["entry"]
+
+        # log = Log.objects.get(pk=request.data["log_id"])
+        # journal.log = log
+
+        try:
+            journal.save()
+            serializer = JournalSerializer(journal, context={'request': request})
+            return Response(serializer.data)
+        except ValidationError as ex:
+            return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
 
     def retrieve(self, request, pk=None):
         """Handle GET requests for single type
@@ -47,5 +70,17 @@ class JournalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Journal
         fields = ('id', 'entry')       
+
+class LogSerializer(serializers.ModelSerializer):
+    """JSON serializer for logs
+
+    Arguments:
+        serializers
+    """
+    class Meta:
+        model = Log
+        fields = ('id', 'user', 'type', 'journal', 'date', 'time')       
+
+    
 
 
