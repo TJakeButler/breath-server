@@ -1,0 +1,23 @@
+[
+    {
+        "model": "breathapi.time",
+        "pk": 1,
+        "fields": {
+            "minutes": 1
+        }
+    },
+    {
+        "model": "breathapi.time",
+        "pk": 2,
+        "fields": {
+            "minutes": 2
+        }
+    },
+    {
+        "model": "breathapi.time",
+        "pk": 3,
+        "fields": {
+            "minutes": 3
+        }
+    }
+]

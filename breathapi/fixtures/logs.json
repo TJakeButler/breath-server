@@ -1,0 +1,35 @@
+[
+    {
+        "model": "breathapi.log",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "type": 1,
+            "journal": 1,
+            "date": "2020-08-28T14:51:39.989Z",
+            "time": 1
+        }
+    },
+    {
+        "model": "breathapi.log",
+        "pk": 2,
+        "fields": {
+            "user": 1,
+            "type": 2,
+            "journal": 2,
+            "date": "2020-08-28T14:51:39.989Z",
+            "time": 2
+        }
+    },
+    {
+        "model": "breathapi.log",
+        "pk": 3,
+        "fields": {
+            "user": 1,
+            "type": 3,
+            "journal": 3,
+            "date": "2020-08-28T14:51:39.989Z",
+            "time": 3
+        }
+    }
+]

@@ -1,0 +1,44 @@
+[
+    {
+        "model": "breathapi.type",
+        "pk": 1,
+        "fields": {
+            "name": "Relax",
+            "inhale": 4,
+            "exhale": 6,
+            "hold": 0
+        }
+    },
+    {
+        "model": "breathapi.type",
+        "pk": 2,
+        "fields": {
+            "name": "Sleep",
+            "inhale": 4,
+            "exhale": 8,
+            "hold": 7
+        }
+    },
+    {
+        "model": "breathapi.type",
+        "pk": 3,
+        "fields": {
+            "name": "Morning",
+            "inhale": 6,
+            "exhale": 2,
+            "hold": 0
+        }
+    },
+    {
+        "model": "breathapi.type",
+        "pk": 4,
+        "fields": {
+            "name": "Recharge",
+            "inhale": 4,
+            "exhale": 4,
+            "hold": 4
+        }
+    }
+    
+    
+]

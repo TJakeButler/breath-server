@@ -1,0 +1,12 @@
+{
+    "python.linting.pylintEnabled": true,
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "db.sqlite3",
+            "database": "db.sqlite3"
+        }
+    ],
+    "python.pythonPath": "/Users/jakebutler/.local/share/virtualenvs/breath_server-j1o2Se1I/bin/python"
+}
