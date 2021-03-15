@@ -11,6 +11,31 @@ from rest_framework import status
 
 class Journals(ViewSet):
     """Journals"""
+    def update(self, request, pk=None):
+            """Handle PUT requests for a log
+
+            Returns:
+                Response -- Empty body with 204 status code
+            """
+            # gamer = Gamer.objects.get(user=request.auth.user)
+
+            # Do mostly the same thing as POST, but instead of
+            # creating a new instance of Game, get the game record
+            # from the database whose primary key is `pk`
+            journal = Journal.objects.get(pk=pk)
+            journal.entry = request.data["entry"]
+
+            journal.save()
+            
+
+            # log = Log.objects.get(pk=request.data["gameTypeId"])
+            # game.gametype = gametype
+            # game.save()
+
+            # 204 status code means everything worked but the
+            # server is not sending back any data in the response
+            return Response({}, status=status.HTTP_204_NO_CONTENT)
+
 
     def destroy(self, request, pk=None):
         """Handle DELETE requests for a single game
