@@ -22,9 +22,6 @@ class Logs(ViewSet):
         Returns:
             Response -- JSON serialized event instance
         """
-        
-        
-
         log = Log()
         log.user = request.auth.user
         journal = Journal.objects.get(pk=request.data["journal"])
