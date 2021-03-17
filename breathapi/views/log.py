@@ -48,7 +48,7 @@ class Logs(ViewSet):
             Response -- JSON serialized list of logs
         """
         # Get all log records from the database
-        logs = Log.objects.all()
+        logs = Log.objects.filter(user=request.auth.user)
 
         # Support filtering games by type
         #    http://localhost:8000/games?type=1
