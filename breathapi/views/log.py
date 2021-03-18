@@ -24,8 +24,11 @@ class Logs(ViewSet):
         """
         log = Log()
         log.user = request.auth.user
-        journal = Journal.objects.get(pk=request.data["journal"])
-        log.journal = journal
+
+        if request.data["journal"] is not None:
+            journal = Journal.objects.get(pk=request.data["journal"])
+            log.journal = journal
+
         log.date = request.data["date"]
         time = Time.objects.get(pk=request.data["time"])
         log.time = time
