@@ -19,13 +19,11 @@ from breathapi.views import register_user, login_user
 from rest_framework import routers
 from breathapi.views import Types
 from breathapi.views import Times
-from breathapi.views import Journals
 from breathapi.views import Logs
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'types', Types, 'type')
 router.register(r'times', Times, 'time')
-router.register(r'journals', Journals, 'journal')
 router.register(r'logs', Logs, 'log')
 
 urlpatterns = [
