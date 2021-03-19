@@ -8,7 +8,6 @@ from rest_framework import serializers
 from rest_framework import status
 from breathapi.models import Log
 from breathapi.models import Type
-from breathapi.models import Journal
 from breathapi.models import Time
 from django.contrib.auth.models import User
 
@@ -25,11 +24,12 @@ class Logs(ViewSet):
         log = Log()
         log.user = request.auth.user
 
-        if request.data["journal"] is not None:
-            journal = Journal.objects.get(pk=request.data["journal"])
-            log.journal = journal
+        # if request.data["journal"] is not None:
+        #     journal = Journal.objects.get(pk=request.data["journal"])
+        #     log.journal = journal
 
         log.date = request.data["date"]
+        log.journal = request.data["journal"]
         time = Time.objects.get(pk=request.data["time"])
         log.time = time
         type = Type.objects.get(pk=request.data["type"])
@@ -69,7 +69,7 @@ class Logs(ViewSet):
         """Handle GET requests for single log
 
         Returns:
-            Response -- JSON serialized game instance
+            Response -- JSON serialized log instance
         """
         try:
             # `pk` is a parameter to this function, and
@@ -90,7 +90,7 @@ class Logs(ViewSet):
 #         fields = ['first_name', 'last_name', 'email']
 
 class LogSerializer(serializers.ModelSerializer):
-    """JSON serializer for games
+    """JSON serializer for logs
 
     Arguments:
         serializer type
