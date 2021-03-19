@@ -97,7 +97,7 @@ class LogSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = Log
-        fields = ('user', 'type', 'journal', 'date', 'time')
+        fields = ('id', 'user', 'type', 'journal', 'date', 'time')
         depth = 1
              
 
