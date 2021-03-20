@@ -15,6 +15,21 @@ from django.contrib.auth.models import User
 class Logs(ViewSet):
     """Level up logs"""
 
+
+    def destroy(self, request, pk=None):
+
+            try:
+                log = Log.objects.get(pk=pk)
+                log.delete()
+
+                return Response({}, status = status.HTTP_204_NO_CONTENT)
+
+            except Log.DoesNotExist as ex:
+                return Response({'message': ex.args[0]}, status = status.HTTP_404_NOT_FOUND)
+
+            except Exception as ex:
+                return Response({'message': ex.args[0]}, status = status.HTTP_500_INTERNAL_SERVER_ERROR)
+
     def update(self, request, pk=None):
         """Handle Put operations for logs
 
