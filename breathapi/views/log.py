@@ -15,6 +15,37 @@ from django.contrib.auth.models import User
 class Logs(ViewSet):
     """Level up logs"""
 
+    def update(self, request, pk=None):
+        """Handle Put operations for logs
+
+        Returns:
+            Response -- JSON serialized event instance
+        """
+        log = Log.objects.get(pk=pk)
+        log.user = request.auth.user
+
+        # if request.data["journal"] is not None:
+        #     journal = Journal.objects.get(pk=request.data["journal"])
+        #     log.journal = journal
+
+        log.date = log.date
+        log.journal = request.data["journal"]
+        time = Time.objects.get(pk=request.data["time"])
+        log.time = time
+        type = Type.objects.get(pk=request.data["type"])
+        log.type = type
+        # log = Log.objects.get(pk=request.data["log_id"])
+        # journal.log = log
+
+        
+        log.save()
+        return Response({}, status=status.HTTP_204_NO_CONTENT)
+
+        #     serializer = LogSerializer(log, context={'request': request})
+        #     return Response(serializer.data)
+        # except ValidationError as ex:
+        #     return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
+
     def create(self, request):
         """Handle POST operations for events
 
