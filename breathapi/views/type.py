@@ -33,6 +33,7 @@ class Types(ViewSet):
         # Note the addtional `many=True` argument to the
         # serializer. It's needed when you are serializing
         # a list of objects instead of a single object.
+        
         serializer = TypeSerializer(
             types, many=True, context={'request': request})
         return Response(serializer.data)
