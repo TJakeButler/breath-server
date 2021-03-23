@@ -1,4 +1,4 @@
-"""View module for handling requests about game types"""
+"""View module for handling requests about Times """
 from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
@@ -7,13 +7,13 @@ from breathapi.models import Time
 
 
 class Times(ViewSet):
-    """Types"""
+    """Times"""
 
     def retrieve(self, request, pk=None):
-        """Handle GET requests for single type
+        """Handle GET requests for single time
 
         Returns:
-            Response -- JSON serialized type
+            Response -- JSON serialized time
         """
         try:
             time = Time.objects.get(pk=pk)
@@ -23,10 +23,10 @@ class Times(ViewSet):
             return HttpResponseServerError(ex)
 
     def list(self, request):
-        """Handle GET requests to get all types
+        """Handle GET requests to get all times
 
         Returns:
-            Response -- JSON serialized list of game types
+            Response -- JSON serialized list of game times
         """
         times = Time.objects.all()
 
