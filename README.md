@@ -18,8 +18,8 @@ This app is created to help users be modeled different breathing patterns and co
 1. Clone this repo
 
     ```
-    git clone https://github.com/TJakeButler/breath-server
-    cd breath-server
+    git clone git@github.com:TJakeButler/breath-server.git
+    cd breath_server
     ```
 
 2. Activate virtual environment
